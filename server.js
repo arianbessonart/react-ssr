@@ -14,7 +14,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', (req, res) => {
   const appString = renderToString(<Provider store={store}><App /></Provider>);
-
   res.send(template({
     body: appString,
     title: 'FROM THE SERVER'
