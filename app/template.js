@@ -8,7 +8,7 @@ export default ({ body, title }) => {
 
       <body>
         <div id="app">${body}</div>
-        <script src="/bundle.js" type="javascript"></script>
+        <script src="/bundle.js"></script>
       </body>
     </html>
   `;

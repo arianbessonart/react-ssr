@@ -1,5 +1,5 @@
 import React from 'react';
-import AwesomeComponent from './components/list';
+import AwesomeComponent from './components/AwesomeComponent';
 
 export default class App extends React.Component {
   render () {
