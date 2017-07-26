@@ -7,7 +7,8 @@ export default ({ body, title }) => {
       </head>
 
       <body>
-        <div id="root">${body}</div>
+        <div id="app">${body}</div>
+        <script src="/bundle.js" type="javascript"></script>
       </body>
     </html>
   `;
