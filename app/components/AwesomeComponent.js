@@ -9,6 +9,7 @@ class AwesomeComponent extends React.Component {
   render() {
     return (
       <div>
+        Component
         Count : <span>{this.props.data}</span>
         <div><button onClick={this.props.onClick}>Add</button></div>
       </div>

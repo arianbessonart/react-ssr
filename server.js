@@ -15,11 +15,13 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.get('/', (req, res) => {
   const appString = renderToString(<Provider store={store}><App /></Provider>);
   const finalState = store.getState();
-  res.send(template({
-    body: appString,
-    title: 'FROM THE SERVER',
-    preloadedState: finalState,
-  }));
+  setTimeout(() => {
+    res.send(template({
+      body: appString,
+      title: 'FROM THE SERVER',
+      preloadedState: finalState,
+    }));
+  }, 3000)
 });
 
 const port = 3001;
