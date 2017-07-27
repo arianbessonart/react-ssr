@@ -1,7 +1,8 @@
 import express from 'express';
 import path from 'path';
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import reducers from './app/reducers';
@@ -10,7 +11,7 @@ import template from './app/template';
 import api from './api';
 
 const app = express();
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api', api);
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
       title: 'FROM THE SERVER',
       preloadedState: finalState,
     }));
-  }, 3000);
+  }, 1000);
 });
 
 const port = 3001;
