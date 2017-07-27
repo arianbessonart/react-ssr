@@ -7,10 +7,13 @@ import { renderToString } from 'react-dom/server';
 import reducers from './app/reducers';
 import App from './app';
 import template from './app/template';
+import api from './api';
 
 const app = express();
 const store = createStore(reducers);
 app.use(express.static(path.join(__dirname, 'build')));
+
+app.use('/api', api);
 
 app.get('/', (req, res) => {
   const appString = renderToString(<Provider store={store}><App /></Provider>);
@@ -21,7 +24,7 @@ app.get('/', (req, res) => {
       title: 'FROM THE SERVER',
       preloadedState: finalState,
     }));
-  }, 3000)
+  }, 3000);
 });
 
 const port = 3001;

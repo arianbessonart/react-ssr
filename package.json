@@ -14,11 +14,14 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "express": "^4.15.3",
+    "lodash": "^4.17.4",
+    "node-cache": "^4.1.1",
     "path": "^0.12.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
+    "request-promise": "^4.2.1",
     "webpack": "^3.4.0"
   },
   "devDependencies": {
