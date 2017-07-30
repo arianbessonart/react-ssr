@@ -3,20 +3,19 @@ import { connect } from 'react-redux';
 import RestaurantList from '../components/Restaurant/RestaurantList';
 import { fetchRestaurants } from '../actions/index.js';
 
-class ShopList extends React.Component {
-
-  static fetchData(store) {
-    return store.dispatch(fetchRestaurants());
-  }
+class ShopListClient extends React.Component {
 
   componentDidMount() {
-    console.log(this.props.location.query);
+    this.props.fetchRestaurants();
   }
 
   render () {
     const { restaurants } = this.props;
     return (
-      <RestaurantList items={restaurants} />
+      <div>
+        <h3>LAYOUT</h3>
+        <RestaurantList items={restaurants} />
+      </div>
     );
   }
 }
@@ -33,4 +32,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShopList);
+export default connect(mapStateToProps, mapDispatchToProps)(ShopListClient);

@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
-import StaticRouter from 'react-router-dom/StaticRouter';
+import { StaticRouter, matchPath } from 'react-router-dom';
 import { matchRoutes, renderRoutes } from 'react-router-config';
 import reducers from './app/reducers';
 import routes from './app/routes.js';
@@ -20,6 +20,7 @@ app.use('/api', api);
 
 app.get('*', (req, res) => {
   const branch = matchRoutes(routes, req.url);
+  console.log(branch);
   const promises = branch.map(({route}) => {
     let fetchData = route.component.fetchData;
     return fetchData instanceof Function ? fetchData(store) : Promise.resolve(null)
@@ -47,24 +48,6 @@ app.get('*', (req, res) => {
       preloadedState: finalState,
     }));
   });
-
-
-
-  // const appString = renderToString(
-  //   <Provider store={store}>
-  //     <StaticRouter location={req.url} context={{}}>
-  //       {renderRoutes(routes)}
-  //     </StaticRouter>
-  //   </Provider>
-  // );
-  // const finalState = store.getState();
-  // setTimeout(() => {
-  //   res.send(template({
-  //     body: appString,
-  //     title: 'FROM THE SERVER',
-  //     preloadedState: finalState,
-  //   }));
-  // }, 1000);
 });
 
 const port = 3001;
