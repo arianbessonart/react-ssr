@@ -1,15 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import RestaurantList from '../components/Restaurant/RestaurantList';
+import { fetchRestaurants } from '../actions/index.js';
 
 class ShopList extends React.Component {
 
+  static fetchData(store) {
+    return store.dispatch(fetchRestaurants());
+  }
+
   render () {
+    const { restaurants } = this.props;
     return (
-      <h1>
-        SHOPLIST
-      </h1>
+      <RestaurantList items={restaurants} />
     );
   }
 }
 
-export default connect(null, null)(ShopList);
+const mapStateToProps = (state) => ({
+  restaurants: state.restaurants,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchRestaurants: () => {
+      dispatch(fetchRestaurants());
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopList);

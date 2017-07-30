@@ -17,7 +17,6 @@ function find(req, res) {
   const filters = controller.encodeData(req.query);
   const { max, offset } = req;
   const url = `${restaurantsURL}&country=1&max=${max}&offset=${offset}&withFilters=true&searchWithFeaturedProducts=true&${filters}`;
-  console.log(filters);
   const token = controller.getToken();
   rp({
     uri: url,

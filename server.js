@@ -41,14 +41,11 @@ app.get('*', (req, res) => {
       return res.redirect(302, context.url);
     }
     const finalState = store.getState();
-    setTimeout(() => {
-      res.send(template({
-        body: appString,
-        title: 'FROM THE SERVER',
-        preloadedState: finalState,
-      }));
-    }, 0);
-    // res.render('index', {title: 'Express', data: store.getState(), content });
+    res.send(template({
+      body: appString,
+      title: 'FROM THE SERVER',
+      preloadedState: finalState,
+    }));
   });
 
 
