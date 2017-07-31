@@ -4,11 +4,8 @@ const _ = require('lodash');
 const router = express.Router();
 const controller = require('../controllers');
 const channelService = require('../services/channels');
-// const restaurantsURL = "http://stg-mobile-api.pedidosya.com/mobile/v2/restaurants?point=-34.9116033,-56.1594633&country=1&includePaymentMethods=MundiPagg,MercadoPago,VisaNet,Ticket%20Alimentaci%C3%B3n%20Online,Ticket%20Restaurant%20Online,Decidir&searchWithFeaturedProducts=true&offset=0&max=50";
-const restaurantsURL = 'http://stg-mobile-api.pedidosya.com/mobile/v2/restaurants?&includePaymentMethods=MundiPagg,MercadoPago,VisaNet,Ticket%20Alimentaci%C3%B3n%20Online,Ticket%20Restaurant%20Online,Decidir';
-const restaurantURL = 'http://stg-mobile-api.pedidosya.com/mobile/v2/restaurants/';
-const initialDataURL = 'http://stg-mobile-api.pedidosya.com/mobile/v2/functions/countries';
-const productsURL = 'http://stg-mobile-api.pedidosya.com/mobile/v2/products/1530855/optionGroups';
+const restaurantsURL = '';
+const restaurantURL = '';
 
 function find(req, res) {
   if (!req.query.point) {
