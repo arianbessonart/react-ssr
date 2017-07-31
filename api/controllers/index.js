@@ -1,8 +1,8 @@
 const rp = require('request-promise');
 const NodeCache = require('node-cache');
 const cache = new NodeCache();
-const appInitURL = 'http://stg-mobile-api.pedidosya.com/mobile/v1/functions/appInit?app=ios';
-const appInitDataURL = 'http://stg-mobile-api.pedidosya.com/mobile/v1/functions/countries/1/initialData';
+const appInitURL = '';
+const appInitDataURL = '';
 
 function init() {
   rp({
