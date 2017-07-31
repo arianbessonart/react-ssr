@@ -19,11 +19,14 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api', api);
 
 app.get('*', (req, res) => {
-  const branch = matchRoutes(routes, req.url);
-  console.log(branch);
-  const promises = branch.map(({route}) => {
-    let fetchData = route.component.fetchData;
-    return fetchData instanceof Function ? fetchData(store) : Promise.resolve(null)
+
+  const promises = [];
+  routes.some(route => {
+    const match = matchPath(req.path, route)
+    if (match) {
+      let fetchData = route.component.fetchData;
+      promises.push(fetchData instanceof Function ? fetchData(store) : Promise.resolve(null));
+    }
   });
 
   return Promise.all(promises).then((data) => {
