@@ -6,7 +6,9 @@
   "scripts": {
     "start": "concurrently --kill-others \"webpack -d --watch\" \"node_modules/.bin/babel-watch server.js\"",
     "start:prod": "concurrently --kill-others \"webpack -p --watch\" \"node_modules/.bin/babel-watch server.js\"",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "babel-core": "^6.25.0",
@@ -34,7 +36,9 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "@storybook/react": "^3.2.0",
     "babel-watch": "^2.0.7",
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "storybook-router": "^0.2.9"
   }
 }
