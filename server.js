@@ -14,7 +14,10 @@ import api from './api';
 
 const app = express();
 const store = createStore(reducers, applyMiddleware(thunk));
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.resolve('public')));
+app.use(['*.js'], (req, res) => {
+  res.status(404).end();
+});
 
 app.use('/api', api);
 

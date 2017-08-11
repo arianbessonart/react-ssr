@@ -35,6 +35,8 @@
   },
   "devDependencies": {
     "babel-watch": "^2.0.7",
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "webpack-node-externals": "^1.6.0"
   }
 }
