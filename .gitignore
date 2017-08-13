@@ -58,3 +58,4 @@ typings/
 .env
 
 build/
+public/bundle.js
