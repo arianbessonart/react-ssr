@@ -16,12 +16,6 @@ var commonLoaders = [
     query: {
       cacheDirectory: true,
       presets: ['react', 'es2015', 'stage-0'],
-      plugins: [
-        // 'transform-decorators-legacy',
-        // 'transform-react-constant-elements',
-        // 'transform-react-inline-elements',
-        // 'lodash'
-      ]
     }
   },
   {
@@ -44,8 +38,14 @@ var config = [{
     path: PUBLIC_DIR,
     filename: 'bundle.js'
   },
+  plugins: [new ExtractTextPlugin('styles.css')],
   module: {
-    loaders: commonLoaders,
+    loaders: commonLoaders.concat(
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      }
+    ),
   }
 }, {
   entry: APP_DIR + '/server.js',
@@ -65,16 +65,7 @@ var config = [{
     setImmediate: false
   },
   module: {
-    loaders: commonLoaders.concat(
-      {
-        test: /\.less$/,
-        loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[hash:base64:5]!postcss!less')
-      },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('css!postcss')
-      }
-    )
+    loaders: commonLoaders.concat()
   }
 }];
 

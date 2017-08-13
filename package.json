@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently --kill-others \"webpack -d --watch\" \"node_modules/.bin/babel-watch server.js\"",
+    "start": "concurrently --kill-others \"webpack -d --watch\" \"node_modules/.bin/nodemon build/server.js\"",
     "start:prod": "concurrently --kill-others \"webpack -p --watch\" \"node_modules/.bin/babel-watch server.js\"",
     "build": "webpack -p"
   },
@@ -37,6 +37,7 @@
     "babel-watch": "^2.0.7",
     "concurrently": "^3.5.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "nodemon": "^1.11.0",
     "webpack-node-externals": "^1.6.0"
   }
 }
