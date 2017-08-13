@@ -43,7 +43,7 @@ var config = [{
     loaders: commonLoaders.concat(
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        loader: ExtractTextPlugin.extract('css-loader')
       }
     ),
   }
@@ -64,8 +64,14 @@ var config = [{
     __dirname: false,
     setImmediate: false
   },
+  plugins: [new ExtractTextPlugin('styles.css')],
   module: {
-    loaders: commonLoaders.concat()
+    loaders: commonLoaders.concat(
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('css-loader')
+      }
+    ),
   }
 }];
 
